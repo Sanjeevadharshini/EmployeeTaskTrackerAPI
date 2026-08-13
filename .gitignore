@@ -1,0 +1,20 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+
+# Logs
+Logs/
+Logging/
+*.log
+
+# ASP.NET development files
+Properties/launchSettings.json
+
+# Local configuration / secrets
+appsettings.json
+appsettings.Development.json
