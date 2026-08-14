@@ -41,9 +41,11 @@ namespace EmployeeTaskTrackerAPI.DAL
             return Convert.ToInt32(result);
         }
 
-        public async Task<List<TaskModel>> GetAllAsync(string? search, string? status, string? priority, int? assignedTo)
+        public async Task<PagedResult<TaskModel>> GetAllAsync(string? search, string? status, string? priority, int? assignedTo, int pageNumber, int pageSize)
         {
             var tasks = new List<TaskModel>();
+
+            int totalCount = 0;
 
             using SqlConnection connection = _connectionFactory.CreateConnection();
 
@@ -59,6 +61,10 @@ namespace EmployeeTaskTrackerAPI.DAL
 
             command.Parameters.Add("@AssignedTo", SqlDbType.Int).Value = (object?)assignedTo ?? DBNull.Value;
 
+            command.Parameters.Add("@PageNumber", SqlDbType.Int).Value = pageNumber;
+
+            command.Parameters.Add("@PageSize", SqlDbType.Int).Value = pageSize;
+
             await connection.OpenAsync();
 
             using SqlDataReader reader = await command.ExecuteReaderAsync();
@@ -66,9 +72,20 @@ namespace EmployeeTaskTrackerAPI.DAL
             while (await reader.ReadAsync())
             {
                 tasks.Add(MapTask(reader));
+
+                if (totalCount == 0)
+                {
+                    totalCount = Convert.ToInt32(reader["TotalCount"]);
+                }
             }
 
-            return tasks;
+            return new PagedResult<TaskModel>
+            {
+                Items = tasks,
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
         }
 
         public async Task<TaskModel?> GetByIdAsync(

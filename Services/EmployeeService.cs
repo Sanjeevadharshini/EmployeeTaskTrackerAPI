@@ -31,9 +31,13 @@ namespace EmployeeTaskTrackerAPI.Services
             return await _employeeDAL.CreateAsync(request.Name, request.Email, passwordHash, createdBy);
         }
 
-        public async Task<List<User>> GetAllAsync()
+        public async Task<PagedResult<User>> GetAllAsync(EmployeeFilterRequest request)
         {
-            return await _employeeDAL.GetAllAsync();
+            int pageNumber = request.PageNumber < 1 ? 1 : request.PageNumber;
+
+            int pageSize = request.PageSize < 1 ? 0 : Math.Min(request.PageSize, 100);
+
+            return await _employeeDAL.GetAllAsync(pageNumber, pageSize);
         }
 
         public async Task<User?> GetByIdAsync(int userId)

@@ -67,15 +67,21 @@ namespace EmployeeTaskTrackerAPI.DAL
             return Convert.ToInt32(result);
         }
 
-        public async Task<List<User>> GetAllAsync()
+        public async Task<PagedResult<User>> GetAllAsync(int pageNumber, int pageSize)
         {
             var employees = new List<User>();
+
+            int totalCount = 0;
 
             using SqlConnection connection = _connectionFactory.CreateConnection();
 
             using SqlCommand command = new SqlCommand("SP_Employee_GetAll", connection);
 
             command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.Add("@PageNumber", SqlDbType.Int).Value = pageNumber;
+
+            command.Parameters.Add("@PageSize", SqlDbType.Int).Value = pageSize;
 
             await connection.OpenAsync();
 
@@ -95,9 +101,20 @@ namespace EmployeeTaskTrackerAPI.DAL
 
                     IsActive = Convert.ToBoolean(reader["IsActive"])
                 });
+
+                if (totalCount == 0)
+                {
+                    totalCount = Convert.ToInt32(reader["TotalCount"]);
+                }
             }
 
-            return employees;
+            return new PagedResult<User>
+            {
+                Items = employees,
+                TotalCount = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
         }
 
         public async Task<User?> GetByIdAsync(int userId)

@@ -46,12 +46,16 @@ namespace EmployeeTaskTrackerAPI.Controllers
 
             string currentUserRole = _currentUser.Role ?? string.Empty;
 
-            var tasks = await _taskService.GetAllAsync(request, currentUserId, currentUserRole);
+            var result = await _taskService.GetAllAsync(request, currentUserId, currentUserRole);
 
             return Ok(new
             {
                 success = true,
-                data = tasks
+                data = result.Items,
+                totalCount = result.TotalCount,
+                pageNumber = result.PageNumber,
+                pageSize = result.PageSize,
+                totalPages = result.TotalPages
             });
         }
 

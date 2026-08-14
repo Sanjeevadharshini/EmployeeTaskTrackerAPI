@@ -7,7 +7,7 @@ namespace EmployeeTaskTrackerAPI.Services.Interfaces
     {
         Task<int> CreateAsync(CreateEmployeeRequest request, int createdBy);
 
-        Task<List<User>> GetAllAsync();
+        Task<PagedResult<User>> GetAllAsync(EmployeeFilterRequest request);
 
         Task<User?> GetByIdAsync(int userId);
 

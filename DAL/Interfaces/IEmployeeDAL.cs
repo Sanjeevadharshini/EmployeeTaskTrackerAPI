@@ -7,7 +7,7 @@ namespace EmployeeTaskTrackerAPI.DAL.Interfaces
         Task<User?> GetByEmailAsync(string email, int userId);
         Task<int> CreateAsync(string name, string email, string passwordHash, int createdBy);
 
-        Task<List<User>> GetAllAsync();
+        Task<PagedResult<User>> GetAllAsync(int pageNumber, int pageSize);
 
         Task<User?> GetByIdAsync(int userId);
 

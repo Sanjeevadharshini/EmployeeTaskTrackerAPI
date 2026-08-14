@@ -37,14 +37,18 @@ namespace EmployeeTaskTrackerAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] EmployeeFilterRequest request)
         {
-            var employees = await _employeeService.GetAllAsync();
+            var result = await _employeeService.GetAllAsync(request);
 
             return Ok(new
             {
                 success = true,
-                data = employees
+                data = result.Items,
+                totalCount = result.TotalCount,
+                pageNumber = result.PageNumber,
+                pageSize = result.PageSize,
+                totalPages = result.TotalPages
             });
         }
 

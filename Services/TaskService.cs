@@ -22,7 +22,7 @@ namespace EmployeeTaskTrackerAPI.Services
             return await _taskDAL.CreateAsync(request.Title, request.Description, request.AssignedTo, request.Priority, request.DueDate, createdBy);
         }
 
-        public async Task<List<TaskModel>> GetAllAsync(TaskFilterRequest request, int currentUserId, string currentUserRole)
+        public async Task<PagedResult<TaskModel>> GetAllAsync(TaskFilterRequest request, int currentUserId, string currentUserRole)
         {
             ValidateFilters(request);
 
@@ -33,7 +33,11 @@ namespace EmployeeTaskTrackerAPI.Services
                 assignedTo = currentUserId;
             }
 
-            return await _taskDAL.GetAllAsync(request.Search, request.Status, request.Priority, assignedTo);
+            int pageNumber = request.PageNumber < 1 ? 1 : request.PageNumber;
+
+            int pageSize = request.PageSize < 1 ? 10 : Math.Min(request.PageSize, 100);
+
+            return await _taskDAL.GetAllAsync(request.Search, request.Status, request.Priority, assignedTo, pageNumber, pageSize);
         }
 
         public async Task<TaskModel?> GetByIdAsync(int taskId, int currentUserId, string currentUserRole)

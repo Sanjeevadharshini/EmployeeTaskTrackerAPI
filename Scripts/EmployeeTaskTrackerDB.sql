@@ -1,6 +1,6 @@
 USE [EmployeeTaskTrackerDB]
 GO
-/****** Object:  Table [dbo].[ExceptionLog]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  Table [dbo].[ExceptionLog]    Script Date: 8/14/2026 11:06:09 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[ExceptionLog](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TaskHistory]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  Table [dbo].[TaskHistory]    Script Date: 8/14/2026 11:06:09 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -52,7 +52,7 @@ CREATE TABLE [dbo].[TaskHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tasks]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  Table [dbo].[Tasks]    Script Date: 8/14/2026 11:06:09 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -80,7 +80,7 @@ CREATE TABLE [dbo].[Tasks](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 8/14/2026 11:06:09 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -102,119 +102,77 @@ CREATE TABLE [dbo].[Users](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-SET IDENTITY_INSERT [dbo].[ExceptionLog] ON 
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (1, N'SP_Employee_Create', 50001, 16, 1, 23, N'SP_Employee_Create', N'Email already exists.', CAST(N'2026-08-13T14:00:40.0000000' AS DateTime2))
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (2, N'SP_Task_Create', 50004, 16, 1, 32, N'SP_Task_Create', N'Assigned employee is invalid or inactive.', CAST(N'2026-08-13T17:37:21.0000000' AS DateTime2))
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (3, N'SP_Task_Update', 50007, 16, 1, 40, N'SP_Task_Update', N'Assigned employee is invalid or inactive.', CAST(N'2026-08-13T17:40:22.0000000' AS DateTime2))
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (4, N'SP_Task_UpdateStatus', 50010, 16, 1, 25, N'SP_Task_UpdateStatus', N'Task not found.', CAST(N'2026-08-13T17:47:10.0000000' AS DateTime2))
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (5, N'SP_Task_UpdateStatus', 50010, 16, 1, 25, N'SP_Task_UpdateStatus', N'Task not found for this user.', CAST(N'2026-08-13T17:48:37.0000000' AS DateTime2))
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (6, N'SP_Task_UpdateStatus', 50010, 16, 1, 25, N'SP_Task_UpdateStatus', N'Task not found for this user.', CAST(N'2026-08-13T17:52:32.0000000' AS DateTime2))
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (7, N'SP_Task_UpdateStatus', 50010, 16, 1, 25, N'SP_Task_UpdateStatus', N'Task not found for this user.', CAST(N'2026-08-13T17:52:59.0000000' AS DateTime2))
-GO
-INSERT [dbo].[ExceptionLog] ([ExceptionLogId], [SPName], [ErrorNumber], [ErrorSeverity], [ErrorState], [ErrorLine], [ErrorProcedure], [ErrorMessage], [ErrorDate]) VALUES (8, N'SP_Task_UpdateStatus', 50010, 16, 1, 25, N'SP_Task_UpdateStatus', N'Task not found for this user.', CAST(N'2026-08-13T17:53:46.0000000' AS DateTime2))
-GO
-SET IDENTITY_INSERT [dbo].[ExceptionLog] OFF
-GO
 SET IDENTITY_INSERT [dbo].[TaskHistory] ON 
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (1, 1, N'Prepare API documentation', N'Create API documentation for the task tracker', 5, N'High', N'Pending', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:37:37.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-13T17:37:37.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (1, 1, N'TASK 1', N'DESC', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:51:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:51:41.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:51:41.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (2, 1, N'Prepare API documentation', N'Create API documentation for the task tracker', 5, N'High', N'Pending', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:37:37.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T17:38:30.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (2, 1, N'TASK 1', N'DESC', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:51:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:51:41.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-14T10:52:38.0000000' AS DateTime2), 2)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (3, 1, N'Updated API documentation', N'Updated task description', 3, N'Low', N'Pending', CAST(N'2026-08-22T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:37:37.0000000' AS DateTime2), 1, CAST(N'2026-08-13T17:38:30.0000000' AS DateTime2), 1, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T17:39:40.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (3, 1, N'TASK 1', N'DESC', 2, N'Low', N'Completed', CAST(N'2026-08-14T10:51:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:51:41.0000000' AS DateTime2), 1, CAST(N'2026-08-14T10:52:38.0000000' AS DateTime2), 2, NULL, NULL, N'UPDATE', CAST(N'2026-08-14T10:55:07.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (4, 1, N'Updated API documentation', N'Updated task description', 5, N'Low', N'Pending', CAST(N'2026-08-22T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:37:37.0000000' AS DateTime2), 1, CAST(N'2026-08-13T17:39:40.0000000' AS DateTime2), 1, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T17:42:48.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (4, 2, N'TASK 2', N'TASK DESC 2', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:55:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:55:44.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:55:44.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (5, 1, N'Updated API documentation', N'Updated task description', 5, N'Low', N'Pending', CAST(N'2026-08-22T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:37:37.0000000' AS DateTime2), 1, CAST(N'2026-08-13T17:42:48.0000000' AS DateTime2), 1, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T17:45:50.0000000' AS DateTime2), 3)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (5, 3, N'TASK 3', N'TASK DESC 3', 2, N'High', N'Pending', CAST(N'2026-08-14T10:56:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:56:04.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:56:04.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (6, 2, N'Prepare API documentation', N'Create API documentation for the task tracker', 3, N'High', N'Pending', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:51:57.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-13T17:51:57.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (6, 4, N'TASK 4', N'TASK DESC 4', 2, N'High', N'Pending', CAST(N'2026-08-14T10:56:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:56:20.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:56:20.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (7, 3, N'Prepare API documentation', N'Create API documentation for the task tracker', 4, N'High', N'Pending', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:55:32.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-13T17:55:32.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (7, 5, N'TASK 5', N'TASK DESC 5', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:56:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:56:39.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:56:39.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (8, 3, N'Prepare API documentation', N'Create API documentation for the task tracker', 4, N'High', N'Pending', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:55:32.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T17:56:02.0000000' AS DateTime2), 4)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (8, 6, N'TASK 6', N'TASK DESC 6', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:57:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:57:04.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:57:04.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (9, 3, N'Prepare API documentation', N'Create API documentation for the task tracker', 4, N'High', N'Completed', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:55:32.0000000' AS DateTime2), 1, CAST(N'2026-08-13T17:56:02.0000000' AS DateTime2), 4, CAST(N'2026-08-13T18:04:25.0000000' AS DateTime2), 1, N'DELETE', CAST(N'2026-08-13T18:04:25.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (9, 7, N'TASK 7', N'TASK DESC 7', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:57:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:57:28.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:57:28.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (10, 4, N'New Title', N'Desc', 4, N'High', N'Pending', CAST(N'2026-08-13T19:37:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T19:37:51.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-13T19:37:51.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (10, 8, N'TASK 8', N'TASK DESC 8', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:57:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:57:53.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:57:53.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (11, 4, N'New Title', N'Desc', 4, N'High', N'Pending', CAST(N'2026-08-13T19:37:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T19:37:51.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T19:38:01.0000000' AS DateTime2), 4)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (11, 9, N'TASK 9', N'TASK DESC 9', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:58:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:58:15.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:58:15.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (12, 4, N'New Title', N'Desc', 4, N'High', N'Completed', CAST(N'2026-08-13T19:37:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T19:37:51.0000000' AS DateTime2), 1, CAST(N'2026-08-13T19:38:01.0000000' AS DateTime2), 4, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T20:20:29.0000000' AS DateTime2), 4)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (12, 10, N'TASK 10', N'TASK DESC 10', 2, N'High', N'Pending', CAST(N'2026-08-14T10:58:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:58:28.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:58:28.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (13, 4, N'New Title', N'Desc', 4, N'High', N'Pending', CAST(N'2026-08-13T19:37:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T19:37:51.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:20:29.0000000' AS DateTime2), 4, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T20:20:32.0000000' AS DateTime2), 4)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (14, 5, N'ww', N'ww', 4, N'Low', N'Pending', CAST(N'2026-08-13T20:21:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (15, 5, N'ww', N'ww', 4, N'Low', N'Pending', CAST(N'2026-08-13T20:21:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T20:21:30.0000000' AS DateTime2), 4)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (16, 5, N'ww', N'ww', 4, N'Low', N'Completed', CAST(N'2026-08-13T20:21:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:21:30.0000000' AS DateTime2), 4, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T20:31:50.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (17, 5, N'ww', N'ww', 4, N'Low', N'Completed', CAST(N'2026-08-13T20:21:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:31:50.0000000' AS DateTime2), 1, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T20:32:01.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (18, 5, N'ww', N'wwasas', 4, N'Low', N'Completed', CAST(N'2026-08-13T20:21:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:32:01.0000000' AS DateTime2), 1, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T20:32:11.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (19, 5, N'wwasas', N'wwasas', 4, N'Low', N'Completed', CAST(N'2026-08-13T20:21:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:32:11.0000000' AS DateTime2), 1, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T20:32:17.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (20, 6, N'asdasdfsdf', N'dsfds', 4, N'Low', N'Pending', CAST(N'2026-08-13T20:44:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:44:22.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-13T20:44:22.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (21, 6, N'asdasdfsdf', N'dsfds', 4, N'Low', N'Pending', CAST(N'2026-08-13T20:44:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:44:22.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T20:44:31.0000000' AS DateTime2), 4)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (22, 6, N'asdasdfsdf', N'dsfds', 4, N'Low', N'Completed', CAST(N'2026-08-13T20:44:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:44:22.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:44:31.0000000' AS DateTime2), 4, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T20:45:35.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (23, 7, N'Test Task 1', N'TEst TAsk DEsc', 6, N'High', N'Pending', CAST(N'2026-08-13T20:49:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:49:23.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-13T20:49:23.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (24, 7, N'Test Task 1', N'TEst TAsk DEsc', 6, N'High', N'Pending', CAST(N'2026-08-13T20:49:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:49:23.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'STATUS_UPDATE', CAST(N'2026-08-13T20:49:49.0000000' AS DateTime2), 6)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (25, 7, N'Test Task 1', N'TEst TAsk DEsc', 6, N'High', N'Completed', CAST(N'2026-08-13T20:49:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:49:23.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:49:49.0000000' AS DateTime2), 6, NULL, NULL, N'UPDATE', CAST(N'2026-08-13T21:41:12.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (26, 2, N'Prepare API documentation', N'Create API documentation for the task tracker', 3, N'High', N'Pending', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:51:57.0000000' AS DateTime2), 1, NULL, NULL, CAST(N'2026-08-13T21:46:59.0000000' AS DateTime2), 1, N'DELETE', CAST(N'2026-08-13T21:46:59.0000000' AS DateTime2), 1)
+INSERT [dbo].[TaskHistory] ([TaskHistoryId], [TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy], [HistoryAction], [HistoryOn], [HistoryBy]) VALUES (13, 11, N'TASK 11', N'TASK DESC 11', 3, N'High', N'Pending', CAST(N'2026-08-14T10:58:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:58:53.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, N'INSERT', CAST(N'2026-08-14T10:58:53.0000000' AS DateTime2), 1)
 GO
 SET IDENTITY_INSERT [dbo].[TaskHistory] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Tasks] ON 
 GO
-INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (1, N'Updated API documentation', N'Updated task description', 5, N'Low', N'Pending', CAST(N'2026-08-22T18:00:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T17:37:37.0000000' AS DateTime2), 1, NULL, CAST(N'2026-08-13T17:45:50.0000000' AS DateTime2), 3, NULL, NULL)
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (1, N'TASK 1', N'TASK DESC', 2, N'Low', N'Completed', CAST(N'2026-08-14T10:51:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:51:41.0000000' AS DateTime2), 1, CAST(N'2026-08-14T10:52:38.2500000' AS DateTime2), CAST(N'2026-08-14T10:55:07.0000000' AS DateTime2), 1, NULL, NULL)
 GO
-INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (2, N'Prepare API documentation', N'Create API documentation for the task tracker', 3, N'High', N'Pending', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 0, 1, CAST(N'2026-08-13T17:51:57.0000000' AS DateTime2), 1, NULL, CAST(N'2026-08-13T21:46:59.0000000' AS DateTime2), 1, CAST(N'2026-08-13T21:46:59.0000000' AS DateTime2), 1)
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (2, N'TASK 2', N'TASK DESC 2', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:55:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:55:44.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (3, N'Prepare API documentation', N'Create API documentation for the task tracker', 4, N'High', N'Completed', CAST(N'2026-08-20T18:00:00.0000000' AS DateTime2), 0, 1, CAST(N'2026-08-13T17:55:32.0000000' AS DateTime2), 1, NULL, CAST(N'2026-08-13T18:04:25.0000000' AS DateTime2), 1, CAST(N'2026-08-13T18:04:25.0000000' AS DateTime2), 1)
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (3, N'TASK 3', N'TASK DESC 3', 2, N'High', N'Pending', CAST(N'2026-08-14T10:56:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:56:04.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (4, N'New Title', N'Desc', 4, N'High', N'Completed', CAST(N'2026-08-13T19:37:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T19:37:51.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:20:32.1033333' AS DateTime2), CAST(N'2026-08-13T20:20:32.0000000' AS DateTime2), 4, NULL, NULL)
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (4, N'TASK 4', N'TASK DESC 4', 2, N'High', N'Pending', CAST(N'2026-08-14T10:56:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:56:20.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (5, N'wwasas', N'wwasas', 5, N'Low', N'Completed', CAST(N'2026-08-13T20:21:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:21:22.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:21:30.2266667' AS DateTime2), CAST(N'2026-08-13T20:32:17.0000000' AS DateTime2), 1, NULL, NULL)
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (5, N'TASK 5', N'TASK DESC 5', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:56:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:56:39.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (6, N'asdasdfsdf', N'dsfds', 4, N'Low', N'Completed', CAST(N'2026-08-13T20:44:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:44:22.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:44:30.8700000' AS DateTime2), CAST(N'2026-08-13T20:45:35.0000000' AS DateTime2), 1, NULL, NULL)
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (6, N'TASK 6', N'TASK DESC 6', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:57:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:57:04.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (7, N'Test Task 1', N'TEst TAsk DEsc', 6, N'High', N'Completed', CAST(N'2026-08-13T20:49:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-13T20:49:23.0000000' AS DateTime2), 1, CAST(N'2026-08-13T20:49:48.6033333' AS DateTime2), CAST(N'2026-08-13T21:41:12.0000000' AS DateTime2), 1, NULL, NULL)
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (7, N'TASK 7', N'TASK DESC 7', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:57:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:57:28.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (8, N'TASK 8', N'TASK DESC 8', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:57:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:57:53.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (9, N'TASK 9', N'TASK DESC 9', 2, N'Low', N'Pending', CAST(N'2026-08-14T10:58:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:58:15.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (10, N'TASK 10', N'TASK DESC 10', 2, N'High', N'Pending', CAST(N'2026-08-14T10:58:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:58:28.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[Tasks] ([TaskId], [Title], [Description], [AssignedTo], [Priority], [Status], [DueDate], [IsActive], [IsDeleted], [CreatedOn], [CreatedBy], [StatusUpdatedOn], [UpdatedOn], [UpdatedBy], [DeletedOn], [DeletedBy]) VALUES (11, N'TASK 11', N'TASK DESC 11', 3, N'High', N'Pending', CAST(N'2026-08-14T10:58:00.0000000' AS DateTime2), 1, 0, CAST(N'2026-08-14T10:58:53.0000000' AS DateTime2), 1, NULL, NULL, NULL, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Tasks] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Users] ON 
 GO
-INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (1, N'System Admin', N'admin@test.com', N'2JivJfc6cijJSOHvSVT8MA==.AHjf8zzl0lVwCqCe6L12BpBkaxBvU7JiSCLYf8/Wg/E=', N'Admin', 1, CAST(N'2026-08-13T13:39:51.0000000' AS DateTime2), 1, NULL, NULL)
+INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (1, N'Admin', N'admin@test.com', N'2JivJfc6cijJSOHvSVT8MA==.AHjf8zzl0lVwCqCe6L12BpBkaxBvU7JiSCLYf8/Wg/E=', N'Admin', 1, CAST(N'2026-08-14T10:49:03.0000000' AS DateTime2), NULL, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (2, N'Updated Employee', N'emp3@example.com', N'1J4Pv2MTa4TS+Jd0jho6NQ==.Dhh9ka/d/wRC0ECPssr32q4qzG/qNsx48Ljm/irZSdc=', N'Employee', 1, CAST(N'2026-08-13T14:01:35.0000000' AS DateTime2), 1, CAST(N'2026-08-13T17:33:53.0000000' AS DateTime2), 1)
+INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (2, N'Employee 1', N'emp1@gmail.com', N'92IlNZAJHz5GmxNWKZu9qQ==.Y/HMPpmAhnOlY6lmQAki9wjGTt8xTckR1LILRIMvme8=', N'Employee', 1, CAST(N'2026-08-14T10:49:49.0000000' AS DateTime2), 1, CAST(N'2026-08-14T10:50:35.0000000' AS DateTime2), 1)
 GO
-INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (3, N'Employee 2', N'emp2@test.com', N'2rGRW09HXBwioiBakXL7HQ==.e3TGPnhFVprc2dNSItdc5StCOHj5l7Guiivr+nR8+ek=', N'Employee', 0, CAST(N'2026-08-13T14:11:13.0000000' AS DateTime2), 1, CAST(N'2026-08-13T19:34:27.0000000' AS DateTime2), 1)
+INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (3, N'Employee 2', N'emp2@gmail.com', N'yVTuRRgx202JV9TCal9AkA==.ZvGDwUoJ0YHzGgUONJXr6Qw4HpyRqsGYn+2pCXXsCTE=', N'Employee', 1, CAST(N'2026-08-14T10:50:52.0000000' AS DateTime2), 1, NULL, NULL)
 GO
-INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (4, N'Employee 3', N'emp3@test.com', N'z/NPoZ5gD7IVpqPzHjzoqQ==.w5lG795UJMhZHod2cXq0iN0yV9HFhS6a6vzdFZtK5Gs=', N'Employee', 1, CAST(N'2026-08-13T17:30:43.0000000' AS DateTime2), 1, NULL, NULL)
-GO
-INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (5, N'Employee 5', N'emp5@test.com', N'xXsmfgcVojwhYdpxPg9m4A==.8+gcd47w2u/iBYSl3CLM8hMXUfFsxkvYU/NLaRtyers=', N'Employee', 1, CAST(N'2026-08-13T17:35:29.0000000' AS DateTime2), 1, CAST(N'2026-08-13T17:50:58.0000000' AS DateTime2), 1)
-GO
-INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (6, N'Test', N'test@gmail.com', N'8XaZynE5MfxMQo9CeT3PCw==.wtkoLpT+/xp160aaZr58FYbw5/LGJv/2C16BtX9sPMU=', N'Employee', 1, CAST(N'2026-08-13T20:48:57.0000000' AS DateTime2), 1, NULL, NULL)
+INSERT [dbo].[Users] ([UserId], [Name], [Email], [PasswordHash], [Role], [IsActive], [CreatedOn], [CreatedBy], [UpdatedOn], [UpdatedBy]) VALUES (4, N'Employee 3', N'emp3@gmail.com', N'f1YhIQU79wWG0xlejnTNIw==.YFXw3Nfl6DScBl6/rkMt3E4STTCGOP5FP75jEAtyGfM=', N'Employee', 1, CAST(N'2026-08-14T10:51:16.0000000' AS DateTime2), 1, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[Users] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_Users_Email]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  Index [UQ_Users_Email]    Script Date: 8/14/2026 11:06:10 AM ******/
 ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [UQ_Users_Email] UNIQUE NONCLUSTERED 
 (
 	[Email] ASC
@@ -260,7 +218,7 @@ ALTER TABLE [dbo].[Users]  WITH CHECK ADD  CONSTRAINT [CK_Users_Role] CHECK  (([
 GO
 ALTER TABLE [dbo].[Users] CHECK CONSTRAINT [CK_Users_Role]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Dashboard_GetRecentTasks]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Dashboard_GetRecentTasks]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -337,7 +295,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Dashboard_GetStatistics]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Dashboard_GetStatistics]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -420,7 +378,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Employee_Create]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Employee_Create]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -512,18 +470,44 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Employee_GetAll]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Employee_GetAll]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
 CREATE   PROCEDURE [dbo].[SP_Employee_GetAll]
+(
+    @PageNumber INT = 1,
+    @PageSize   INT = 0
+)
 AS
 BEGIN
     SET NOCOUNT ON;
 
     BEGIN TRY
 
+        IF @PageNumber IS NULL OR @PageNumber < 1
+            SET @PageNumber = 1;
+
+        IF @PageSize IS NULL OR @PageSize < 0
+            SET @PageSize = 100;
+
+        ELSE IF @PageSize > 100
+            SET @PageSize = 100;
+
+        IF @PageSize = 0
+        BEGIN
+            SELECT @PageSize = COUNT(*)
+            FROM Users
+            WHERE Role = 'Employee'
+              AND IsActive = 1;
+
+            IF @PageSize = 0
+            BEGIN
+                RETURN;
+            END
+        END
         SELECT
             UserId,
             Name,
@@ -533,11 +517,14 @@ BEGIN
             CreatedOn,
             CreatedBy,
             UpdatedOn,
-            UpdatedBy
+            UpdatedBy,
+            COUNT(*) OVER() AS TotalCount
         FROM Users
         WHERE Role = 'Employee'
           AND IsActive = 1
-        ORDER BY Name;
+        ORDER BY Name
+        OFFSET (@PageNumber - 1) * @PageSize ROWS
+        FETCH NEXT @PageSize ROWS ONLY;
 
     END TRY
     BEGIN CATCH
@@ -574,7 +561,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Employee_GetByEmail]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Employee_GetByEmail]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -634,7 +621,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Employee_GetById]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Employee_GetById]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -698,7 +685,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Employee_Update]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Employee_Update]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -792,7 +779,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_LogException]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_LogException]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -839,7 +826,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Task_Create]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Task_Create]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -994,7 +981,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Task_Delete]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Task_Delete]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1118,17 +1105,20 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Task_GetAll]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Task_GetAll]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
 CREATE   PROCEDURE [dbo].[SP_Task_GetAll]
 (
-    @Search NVARCHAR(200) = NULL,
-    @Status NVARCHAR(20) = NULL,
-    @Priority NVARCHAR(10) = NULL,
-    @AssignedTo INT = NULL
+    @Search      NVARCHAR(200) = NULL,
+    @Status      NVARCHAR(20)  = NULL,
+    @Priority    NVARCHAR(10)  = NULL,
+    @AssignedTo  INT           = NULL,
+    @PageNumber  INT           = 1,
+    @PageSize    INT           = 10
 )
 AS
 BEGIN
@@ -1136,8 +1126,18 @@ BEGIN
 
     BEGIN TRY
 
+        IF @PageNumber IS NULL OR @PageNumber < 1
+            SET @PageNumber = 1;
+
+        IF @PageSize IS NULL OR @PageSize < 1
+            SET @PageSize = 10;
+
+        IF @PageSize > 100
+            SET @PageSize = 100;
+
         SELECT T.TaskId, T.Title, T.Description, T.AssignedTo, U.Name AS AssignedEmployee, T.Priority,
-               T.Status, T.DueDate, T.IsActive, T.CreatedOn, T.CreatedBy, T.StatusUpdatedOn, T.UpdatedOn, T.UpdatedBy
+               T.Status, T.DueDate, T.IsActive, T.CreatedOn, T.CreatedBy, T.StatusUpdatedOn, T.UpdatedOn, T.UpdatedBy,
+               COUNT(*) OVER() AS TotalCount
         FROM Tasks T
         INNER JOIN Users U ON T.AssignedTo = U.UserId
         WHERE T.IsActive = 1 AND T.IsDeleted = 0
@@ -1145,6 +1145,7 @@ BEGIN
           (
               @Search IS NULL
               OR T.Title LIKE '%' + @Search + '%'
+              OR U.Name LIKE '%' + @Search + '%'
           )
           AND
           (
@@ -1161,7 +1162,9 @@ BEGIN
               @AssignedTo IS NULL
               OR T.AssignedTo = @AssignedTo
           )
-        ORDER BY T.TaskId DESC;
+        ORDER BY T.TaskId DESC
+        OFFSET (@PageNumber - 1) * @PageSize ROWS
+        FETCH NEXT @PageSize ROWS ONLY;
 
     END TRY
     BEGIN CATCH
@@ -1198,7 +1201,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Task_GetById]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Task_GetById]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1271,7 +1274,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Task_Update]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Task_Update]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1418,7 +1421,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Task_UpdateStatus]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_Task_UpdateStatus]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1547,7 +1550,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_User_Login]    Script Date: 8/13/2026 10:41:31 PM ******/
+/****** Object:  StoredProcedure [dbo].[SP_User_Login]    Script Date: 8/14/2026 11:06:10 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

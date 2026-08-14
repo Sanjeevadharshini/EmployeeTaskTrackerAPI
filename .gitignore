@@ -9,7 +9,6 @@ obj/
 
 # Logs
 Logs/
-Logging/
 *.log
 
 # ASP.NET development files

@@ -6,7 +6,7 @@ namespace EmployeeTaskTrackerAPI.DAL.Interfaces
     {
         Task<int> CreateAsync(string title, string? description, int assignedTo, string priority, DateTime? dueDate, int createdBy);
 
-        Task<List<TaskModel>> GetAllAsync(string? search, string? status, string? priority, int? assignedTo);
+        Task<PagedResult<TaskModel>> GetAllAsync(string? search, string? status, string? priority, int? assignedTo, int pageNumber, int pageSize);
 
         Task<TaskModel?> GetByIdAsync(int taskId);
 
